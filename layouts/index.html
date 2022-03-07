@@ -1,15 +1,174 @@
-{{- define "mainContent" -}}
-  <p id="test">Hello World</p>
-  <p id="hugo">Hugo let's test</p>
-  <script type="text/javascript">
-    const cars= ["Hello", "World", "{{range .Site.AllPages}}{{.Title}}{{end}}"];
-    cars.push("Juice");
-    const person = { name: "David", Surname:"Awokoya"}
-    let length = 16;
-    let lastName = "JohnSon";
-    let x = false;
-    document.getElementById("test").innerHTML = length + lastName + "<br>" + x + typeof x;
-    document.getElementById("hugo").innerHTML = cars.length + "<br>" + cars[0] + "<br>" + person.name ;
-    console.log(cars);
-  </script>
-{{- end -}}
+{{define "mainContent"}}
+
+<div class = "calculator">
+  <h1>CLOUDTRUCKS PROFIT CALCULATOR</h1>
+  <form class="" action="index.html" method="post">
+    <label for="variable">Enter Variable</label>
+    <select id="variable" name="variable">
+      <option value="Revenue"> Revenue </option>
+      <option value="Net Income"> Net Income </option>
+      <option value="Loaded Miles"> Loaded Miles </option>
+    </select>
+    <!-- This is the Region selector -->
+    <label for="region">Enter Region</label>
+    <select id="region" name="region">
+      <option value="ALL"> ALL </option>
+      <option value="MW"> MID WEST </option>
+      <option value="NE"> NORTH EAST </option>
+      <option value="W"> WEST </option>
+      <option value="SW"> SOUTH WEST </option>
+      <option value="SE"> SOUTH EAST </option>
+    </select>
+    <!-- This is the Mile Range-->
+    <label for="mileRange">Enter Mile Range</label>
+    <select id="mileRange" name="mileRange">
+      <option value="ALL"> ALL </option>
+      <option value="300-600"> 300-600 </option>
+      <option value=">600"> >600 </option>
+    </select>
+
+
+    <button type="button" name="button" onclick="Calculate();">Calculate</button>
+  </form>
+  <div class="result">
+    <div class="result_items">
+      <p>Average Per Week</p>
+      <p id="demo">---</p>
+    </div>
+    <div class="result_items">
+      <p>Above Average Per Week</p>
+      <p id="class">---</p>
+    </div>
+
+  </div>
+
+  </div>
+
+
+
+
+<script type="text/javascript">
+  let averageWeek, aboveAverageWeek, mile;
+
+  function Calculate(){
+  let variable = document.querySelector("#variable").value;
+  let region = document.querySelector("#region").value;
+  let mile = document.querySelector("#mileRange").value;
+
+  let mile_all = function(){return mile == "ALL"};
+  let mile_300 = function(){return mile == "300-600"};
+  let mile_600 = function(){return mile == ">600"};
+
+  let rev_all = function(){return variable=="Revenue" && region == "ALL"};
+  let net_all = function(){return variable=="Net Income" && region == "ALL"};
+  let loadedmiles_all = function(){return variable=="Loaded Miles" && region == "ALL"};
+
+  let rev_W = function(){return variable=="Revenue" && region == "W"};
+  let net_W = function(){return variable=="Net Income" && region == "W"};
+  let loadedmiles_W = function(){return variable=="Loaded Miles" && region == "W"};
+  let rev_MW = function(){return variable=="Revenue" && region == "MW"};
+  let net_MW = function(){return variable=="Net Income" && region == "MW"};
+  let loadedmiles_MW = function(){return variable=="Loaded Miles" && region == "MW"};
+  let rev_NE = function(){return variable=="Revenue" && region == "NE"};
+  let net_NE = function(){return variable=="Net Income" && region == "NE"};
+  let loadedmiles_NE = function(){return variable=="Loaded Miles" && region == "NE"};
+  let rev_SE = function(){return variable=="Revenue" && region == "SE"};
+  let net_SE = function(){return variable=="Net Income" && region == "SE"};
+  let loadedmiles_SE = function(){return variable=="Loaded Miles" && region == "SE"};
+  let rev_SW = function(){return variable=="Revenue" && region == "SW"};
+  let net_SW = function(){return variable=="Net Income" && region == "SW"};
+  let loadedmiles_SW = function(){return variable=="Loaded Miles" && region == "SW"};
+
+
+  //all sets of conditions comparison
+  if(rev_all() &&  mile_300()){ averageWeek = 6261;aboveAverageWeek = 7275;}
+  else if (net_all() && mile_300()) {averageWeek = 2429; aboveAverageWeek = 3231;}
+  else if (loadedmiles_all()  && mile_300()) {averageWeek = 1520;aboveAverageWeek = 1734; }
+
+  else if(rev_all() && mile_600()){ averageWeek = 6669;aboveAverageWeek = 7709;}
+  else if (net_all() && mile_600()) {averageWeek = 2373; aboveAverageWeek = 3139;}
+  else if (loadedmiles_all()  && mile_600()) {averageWeek = 1986;aboveAverageWeek = 2292; }
+
+  else if(rev_all() && mile_all()){ averageWeek = 6296;aboveAverageWeek = 7300;}
+  else if (net_all() && mile_all()) {averageWeek = 2369; aboveAverageWeek = 3145;}
+  else if (loadedmiles_all()  && mile_all()) {averageWeek = 1665;aboveAverageWeek = 2083; }
+
+  //MidWest
+  else if(rev_MW() && mile_300()){ averageWeek = 6462;aboveAverageWeek = 7849;}
+  else if (net_MW() && mile_300()) {averageWeek = 2748; aboveAverageWeek = 3625;}
+  else if (loadedmiles_MW()  && mile_300()) {averageWeek = 1650;aboveAverageWeek = 2034; }
+
+  else if(rev_MW() &&  mile_600()){ averageWeek = 6982;aboveAverageWeek = 7971;}
+  else if (net_MW() &&  mile_600()) {averageWeek = 2621; aboveAverageWeek = 3228;}
+  else if (loadedmiles_MW()  &&  mile_600()) {averageWeek = 2008;aboveAverageWeek = 2338; }
+
+  else if(rev_MW() &&  mile_all()){ averageWeek = 6774;aboveAverageWeek = 7997;}
+  else if (net_MW() &&  mile_all()) {averageWeek = 2624; aboveAverageWeek = 3296;}
+  else if (loadedmiles_MW()  &&  mile_all()) {averageWeek = 1934;aboveAverageWeek = 2183; }
+
+
+  //NorthEast
+  else if(rev_NE() && mile_300()){ averageWeek = 7480;aboveAverageWeek = 8152;}
+  else if (net_NE() && mile_300()) {averageWeek = 2937; aboveAverageWeek = 3446;}
+  else if (loadedmiles_NE()  && mile_300()) {averageWeek = 1586;aboveAverageWeek = 1761; }
+
+  else if(rev_NE() &&  mile_600()){ averageWeek = 6359;aboveAverageWeek = 7695;}
+  else if (net_NE() &&  mile_600()) {averageWeek = 2141; aboveAverageWeek = 3283;}
+  else if (loadedmiles_NE()  &&  mile_600()) {averageWeek = 1731;aboveAverageWeek = 1967; }
+
+  else if(rev_NE() &&  mile_all()){ averageWeek = 5769;aboveAverageWeek = 7187;}
+  else if (net_NE() &&  mile_all()) {averageWeek = 2188; aboveAverageWeek = 3255;}
+  else if (loadedmiles_NE()  &&  mile_all()) {averageWeek = 1370;aboveAverageWeek = 1628; }
+
+
+  //SouthEast
+  else if(rev_SE() && mile_300()){ averageWeek = 6205;aboveAverageWeek = 7086;}
+  else if (net_SE() && mile_300()) {averageWeek = 2515; aboveAverageWeek = 3084;}
+  else if (loadedmiles_SE()  && mile_300()) {averageWeek = 1525;aboveAverageWeek = 1642; }
+
+  else if(rev_SE() &&  mile_600()){ averageWeek = 6367;aboveAverageWeek = 7947;}
+  else if (net_SE() &&  mile_600()) {averageWeek = 2574; aboveAverageWeek = 3355;}
+  else if (loadedmiles_SE()  &&  mile_600()) {averageWeek = 1851;aboveAverageWeek = 2084; }
+
+  else if(rev_SE() &&  mile_all()){ averageWeek = 6140;aboveAverageWeek = 7212;}
+  else if (net_SE() &&  mile_all()) {averageWeek = 2441; aboveAverageWeek = 3233;}
+  else if (loadedmiles_SE()  &&  mile_all()) {averageWeek = 1564;aboveAverageWeek = 1900; }
+
+  //SouthWest
+  else if(rev_SW() && mile_300()){ averageWeek = 7186;aboveAverageWeek = 7358;}
+  else if (net_SW() && mile_300()) {averageWeek = 3057; aboveAverageWeek = 3316;}
+  else if (loadedmiles_SW()  && mile_300()) {averageWeek = 1597;aboveAverageWeek = 1672; }
+
+  else if(rev_SW() &&  mile_600()){ averageWeek = 6283;aboveAverageWeek = 6909;}
+  else if (net_SW() &&  mile_600()) {averageWeek = 2282; aboveAverageWeek = 2581;}
+  else if (loadedmiles_SW()  &&  mile_600()) {averageWeek = 2108;aboveAverageWeek = 2261; }
+
+  else if(rev_SW() &&  mile_all()){ averageWeek = 6081;aboveAverageWeek = 6761;}
+  else if (net_SW() &&  mile_all()) {averageWeek = 2258; aboveAverageWeek = 2612;}
+  else if (loadedmiles_SW()  &&  mile_all()) {averageWeek = 1990;aboveAverageWeek = 2215; }
+
+  //West
+  else if(rev_W() && mile_300()){ averageWeek = 6708;aboveAverageWeek = 7388;}
+  else if (net_W() && mile_300()) {averageWeek = 2579; aboveAverageWeek = 3177;}
+  else if (loadedmiles_W()  && mile_300()) {averageWeek = 1588;aboveAverageWeek = 1690; }
+
+  else if(rev_W() &&  mile_600()){ averageWeek = 6967;aboveAverageWeek = 8183;}
+  else if (net_W() &&  mile_600()) {averageWeek = 2417; aboveAverageWeek = 3392;}
+  else if (loadedmiles_W()  &&  mile_600()) {averageWeek = 2044;aboveAverageWeek = 2428; }
+
+  else if(rev_W() &&  mile_all()){ averageWeek = 6719;aboveAverageWeek = 7545;}
+  else if (net_W() &&  mile_all()) {averageWeek = 2169; aboveAverageWeek = 3055;}
+  else if (loadedmiles_W()  &&  mile_all()) {averageWeek = 1925;aboveAverageWeek = 2296; }
+
+  else{averageWeek = "nothing";}
+
+
+
+  document.getElementById("demo").innerHTML = "$" + averageWeek.toLocaleString("en-US");
+  document.getElementById("class").innerHTML = "$" + aboveAverageWeek.toLocaleString("en-US");
+  console.log(typeof averageWeek);
+  }
+
+</script>
+
+{{end}}
