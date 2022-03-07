@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{.Title}}</title>
+    {{$stylecss := resources.Get "css/main.scss"}}
+    {{$styleComponents := resources.Match "/css/components/*.scss"}}
+    {{range $styleComponents}}
+      {{$stylecss = slice $stylecss . | resources.Concat .Name}}
+    {{end}}
+    {{$stylecss = slice $stylecss | resources.Concat "all.scss" | toCSS | fingerprint}}
+    <link rel="stylesheet" href="{{$stylecss.RelPermalink}}">
+  </head>
+  <body>
+    {{- block "mainContent" . -}}
+
+    {{- end -}}
+  </body>
+</html>

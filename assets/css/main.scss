@@ -1,0 +1,54 @@
+$primarycolor : #fafafa;
+body{background-color: $primarycolor; font-size: 16px; font-family:monospace;;}
+.calculator {
+  h1{font-size: 2rem; margin-top: 0px;}
+  max-width: 900px;
+  width: 80%;
+  padding: 40px 90px;
+  background-color: white;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 1px 20px 50px #F3F3F3 ;
+  .result{
+      background-color: #03CDEF;
+      padding: 30px;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+
+      div{
+        background-color: white;
+        padding:10px 30px;
+        margin-right: 20px;
+        p {
+          font-size: 2rem;
+        }
+      }
+  }
+}
+
+form{
+  label{text-transform: uppercase; margin-bottom: .2rem; display: block; color: #aaa; font-size: 1.2rem;}
+  select{
+
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 1rem 1rem;
+    border: 1px solid #CCCCCC;
+    font-size: 1rem;
+  }
+  button{
+    background-color: #03cdef;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+    transition: 300ms;
+    &:hover{
+      color: #fff;
+      background-color: black;
+    }
+  }
+
+}

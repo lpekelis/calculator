@@ -1,0 +1,15 @@
+{{- define "mainContent" -}}
+  <p id="test">Hello World</p>
+  <p id="hugo">Hugo let's test</p>
+  <script type="text/javascript">
+    const cars= ["Hello", "World", "{{range .Site.AllPages}}{{.Title}}{{end}}"];
+    cars.push("Juice");
+    const person = { name: "David", Surname:"Awokoya"}
+    let length = 16;
+    let lastName = "JohnSon";
+    let x = false;
+    document.getElementById("test").innerHTML = length + lastName + "<br>" + x + typeof x;
+    document.getElementById("hugo").innerHTML = cars.length + "<br>" + cars[0] + "<br>" + person.name ;
+    console.log(cars);
+  </script>
+{{- end -}}
