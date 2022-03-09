@@ -163,7 +163,7 @@
     }
 
   else if(region=="SW" &&  mile_all()){
-    revenue_avg = 6081;revenue_aboveAvg = 6761;
+    revenue_avg = 6018;revenue_aboveAvg = 6761;
     netIncome_avg = 2258; netIncome_aboveAvg = 2612;
     loadedMiles_avg = 1990; loadedMiles_aboveAvg = 2215;
     }
@@ -196,8 +196,8 @@
   document.getElementById("netIncomeAvg").innerHTML = "$" + netIncome_avg.toLocaleString("en-US");
   document.getElementById("netIncomeAboveavg").innerHTML = "$" + netIncome_aboveAvg.toLocaleString("en-US");
 
-  document.getElementById("loadedAvg").innerHTML = "$" + loadedMiles_avg.toLocaleString("en-US");
-  document.getElementById("loadedAboveavg").innerHTML = "$" + loadedMiles_aboveAvg.toLocaleString("en-US");
+  document.getElementById("loadedAvg").innerHTML =  loadedMiles_avg.toLocaleString("en-US");
+  document.getElementById("loadedAboveavg").innerHTML =   loadedMiles_aboveAvg.toLocaleString("en-US");
 
   }
 
