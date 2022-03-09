@@ -199,7 +199,7 @@
   loadedMiles_avg = Math.ceil(loadedMiles_avg/10) *10;
   loadedMiles_aboveAvg = Math.ceil(loadedMiles_aboveAvg/10) *10;
 
-  document.getElementById("revAvg").innerHTML = "$" + revenue_avg;
+  document.getElementById("revAvg").innerHTML = "$" + revenue_avg.toLocaleString("en-US");
   document.getElementById("revAboveavg").innerHTML = "$" + revenue_aboveAvg.toLocaleString("en-US");
 
   document.getElementById("netIncomeAvg").innerHTML = "$" + netIncome_avg.toLocaleString("en-US");
