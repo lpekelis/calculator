@@ -189,8 +189,17 @@
 
   else{revenue_avg = "nothing";}
 
+  //round up by 10th.
+  revenue_avg = Math.ceil(revenue_avg/10) *10;
+  revenue_aboveAvg = Math.ceil(revenue_aboveAvg/10) *10;
 
-  document.getElementById("revAvg").innerHTML = "$" + revenue_avg.toLocaleString("en-US");
+  netIncome_avg = Math.ceil(netIncome_avg/10) *10;
+  netIncome_aboveAvg = Math.ceil(netIncome_aboveAvg/10) *10;
+
+  loadedMiles_avg = Math.ceil(loadedMiles_avg/10) *10;
+  loadedMiles_aboveAvg = Math.ceil(loadedMiles_aboveAvg/10) *10;
+
+  document.getElementById("revAvg").innerHTML = "$" + revenue_avg;
   document.getElementById("revAboveavg").innerHTML = "$" + revenue_aboveAvg.toLocaleString("en-US");
 
   document.getElementById("netIncomeAvg").innerHTML = "$" + netIncome_avg.toLocaleString("en-US");
